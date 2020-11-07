@@ -16,7 +16,7 @@ const enteredValue = prompt('Maximum life: ', '100');
 let chosenMaxLife = parseInt(enteredValue);
 let battleLog = [];
 
-if (isNan(chosenMaxLife) || chosenMaxLife <= 0) {
+if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
     chosenMaxLife = 100;
 }
 
