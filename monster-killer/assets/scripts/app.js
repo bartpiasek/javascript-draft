@@ -166,18 +166,6 @@ function attackMonster(mode) {
 
 function attackHandler() {
     attackMonster(MODE_ATTACK);
-
-    // const damage = dealMonsterDamage(ATTACK_VALUE);
-    // currentMonsterHealth -= damage;
-    // const playerDamage = dealPlayerDamage(MONSTER_ATTACK_VALUE);
-    // currentPlayerHealth -= playerDamage;
-    // if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
-    //     alert('You won!');
-    // } else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
-    //     alert('You lost!');
-    // } else if (currentPlayerHealth <= 0 && currentMonsterHealth <= 0 ) {
-    //     alert('Draw!');
-    // }
 }
 
 function strongAttackHandler() {
@@ -216,7 +204,14 @@ function healPlayerHandler() {
 }
 
 function printLogHandler() {
-    console.log(battleLog);
+    // FOR LOOP
+    // for (let i = 0; i < battleLog.length; i++) {
+    //     console.log(battleLog[i]);
+    // }
+    // FOR-OF LOOP
+    for (const log of battleLog) {
+        console.log(log);
+    }
 }
 
 attackBtn.addEventListener('click', attackHandler);
