@@ -34,39 +34,51 @@ function writeToLog(event, value, monsterHealth, playerHealth) {
         finalPlayerHealth: playerHealth
     };
 
-    if (event === LOG_EVENT_PLAYER_ATTACK) {
-        logEntry.target = 'MONSTER'; //ADD THIS TO THE LET LOGENTRY
-    } else if (event === LOG_EVENT_PLAYER_STRONG_ATTACK) {
-        logEntry = {
-            event: event,
-            value: value,
-            target: 'MONSTER',
-            finalMonsterHealth: monsterHealth,
-            finalPlayerHealth: playerHealth
-        };
-    } else if (event === MONSTER_ATTACK_VALUE) {
-        logEntry = {
-            event: event,
-            value: value,
-            target: 'PLAYER',
-            finalMonsterHealth: monsterHealth,
-            finalPlayerHealth: playerHealth
-        };
-    } else if (event === LOG_EVENT_HEAL) {
-        logEntry = {
-            event: event,
-            value: value,
-            target: 'PLAYER',
-            finalMonsterHealth: monsterHealth,
-            finalPlayerHealth: playerHealth
-        };
-    } else if (event === LOG_EVENT_GAME_OVER) {
-        logEntry = {
-            event: event,
-            value: value,
-            finalMonsterHealth: monsterHealth,
-            finalPlayerHealth: playerHealth
-        };
+    switch (event) {
+        case LOG_EVENT_PLAYER_ATTACK:
+            logEntry.target = 'MONSTER';
+            break;
+
+        case LOG_EVENT_PLAYER_STRONG_ATTACK:
+            logEntry = {
+                event: event,
+                value: value,
+                target: 'MONSTER',
+                finalMonsterHealth: monsterHealth,
+                finalPlayerHealth: playerHealth
+            };
+            break;
+
+        case MONSTER_ATTACK_VALUE:
+            logEntry = {
+                event: event,
+                value: value,
+                target: 'PLAYER',
+                finalMonsterHealth: monsterHealth,
+                finalPlayerHealth: playerHealth
+            };
+            break;
+
+        case LOG_EVENT_HEAL:
+            logEntry = {
+                event: event,
+                value: value,
+                target: 'PLAYER',
+                finalMonsterHealth: monsterHealth,
+                finalPlayerHealth: playerHealth
+            };
+            break;
+
+        case LOG_EVENT_GAME_OVER:
+            logEntry = {
+                event: event,
+                value: value,
+                finalMonsterHealth: monsterHealth,
+                finalPlayerHealth: playerHealth
+            };
+            break;
+        default:
+            logEntry = {};
     }
     battleLog.push(logEntry);
 }
