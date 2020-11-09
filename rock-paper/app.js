@@ -39,15 +39,14 @@ const getWinner = function(cChoice, pChoice) {
         return RESULT_DRAW;
     } else if (
         cChoice === ROCK && pChoice === PAPER ||
-        cChoice === PAPER && pChoice === PAPER ||
+        cChoice === PAPER && pChoice === SCISSORS ||
         cChoice === SCISSORS && pChoice === ROCK
         ) {
         return RESULT_PLAYER_WIN;
     } else {
-        RESULT_COMPUTER_WIN;
+        return RESULT_COMPUTER_WIN;
     }
-
-}
+};
 
 startGameBtn.addEventListener('click', function() {
     if (gameIsRunning) {
