@@ -10,7 +10,7 @@ const RESULT_COMPUTER_WIN = 'COMPUTER_WINS';
 
 let gameIsRunning = false;
 
-const getPlayerChoice = function () {
+const getPlayerChoice = () => {
     const selection = prompt(`${ROCK}, ${PAPER} or ${SCISSORS}?`, '').toUpperCase();
     if (
         selection !== ROCK && 
@@ -47,8 +47,8 @@ const getComputerChoice = function() {
 //         return RESULT_COMPUTER_WIN;
 //     }
 // };
-// GETWINNER WITH TURNARY AND ARROW FUNCTION
-const getWinner = (cChoice, pChoice) => 
+// GETWINNER WITH TURNARY AND ARROW FUNCTION, WITH DEFAULT ARG VALUE
+const getWinner = (cChoice, pChoice = DEFAULT_USER_CHOICE) => 
     cChoice === pChoice 
     ? RESULT_DRAW
     : (cChoice === ROCK && pChoice === PAPER) ||
@@ -66,6 +66,23 @@ startGameBtn.addEventListener('click', function() {
     console.log('Game is starting...');
     const playerChoice = getPlayerChoice();
     const computerChoice = getComputerChoice();
-    const winner = getWinner(computerChoice, playerChoice);
-    console.log(winner);
+
+    let winner;
+    if (playerChoice) {
+        const winner = getWinner(computerChoice, playerChoice);
+    } else {
+        winner = getWinner(computerChoice);
+    }
+
+    let message = `You picked ${playerChoice ? playerChoice : DEFAULT_USER_CHOICE}, 
+        computer picked ${computerChoice} - `;
+    if (winner === RESULT_DRAW) {
+        message = message + 'DRAW';
+    } else if (winner === RESULT_PLAYER_WIN) {
+        message = message + 'WIN';
+    } else {
+        message = message + 'LOST';
+    }
+    alert(message);
+    gameIsRunning = false;
 });
