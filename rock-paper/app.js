@@ -58,7 +58,8 @@ const getWinner = (cChoice, pChoice = DEFAULT_USER_CHOICE) =>
     : RESULT_COMPUTER_WIN;
 
 
-startGameBtn.addEventListener('click', function() {
+// ARROW FUNCTION AS A PARAMETER - CALLBACK FUNCTION
+startGameBtn.addEventListener('click', () => {
     if (gameIsRunning) {
         return;
     }
